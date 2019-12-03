@@ -11,10 +11,7 @@ for f = 1:length(fnames)
 	if contains(fnames{f}, '.csv') % Select files with .csv extensions
 		data = load(fnames{f});
 		x = data(:,2);
-		time = data(:,1);
-		time = [time(1); time(:)];	
-		time = diff(time);
-		fs = ceil(1/mean(time));
+		fs = 500; 
 		t = linspace(0, length(x)/fs, length(x));
 		save([fnames{f}(1:end-4) '.mat'], 'x', 't', 'fs');
 	end	
